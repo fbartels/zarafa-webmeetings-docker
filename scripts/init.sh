@@ -12,8 +12,13 @@ sed -i -e 's,tne-default-encryption-block-key,'${WEBMEETINGS_ENCRYPTION_SECRET}'
 sed -i -e 's,some-secret-do-not-keep,'${WEBMEETINGS_SHARED_SECRET}',g' /etc/zarafa/webmeetings.cfg
 sed -i -e 's,/webapp/plugins/spreedwebrtc/php/AngularPluginWrapper.php,/plugins/spreedwebrtc/php/AngularPluginWrapper.php,g' /etc/zarafa/webmeetings.cfg
 
+# 
+
 service php5-fpm start
-service nginx start
 service zarafa-presence start
 service zarafa-webmeetings start
-/bin/bash
+
+# exec CMD
+echo ">> exec docker CMD"
+echo "$@"
+exec "$@"

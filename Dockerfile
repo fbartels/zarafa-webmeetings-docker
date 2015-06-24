@@ -25,6 +25,7 @@ COPY /scripts/init.sh /usr/local/bin/init.sh
 
 # Set Entrypoint
 ENTRYPOINT ["/usr/local/bin/init.sh"]
+CMD ["nginx"]
 
 # Expose ports.
 EXPOSE 80
