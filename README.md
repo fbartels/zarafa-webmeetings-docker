@@ -10,7 +10,19 @@ The image contains the latest released version of WebApp and Web Meetings, as we
 
 **Q: what do I have to do, to get this running?**
 
-You need to have Docker already installed. After this has been done you can simply pull the image from their servers (```docker pull fbartels/zarafa-webmeetings-docker```), download the default configuration (```wget https://raw.githubusercontent.com/fbartels/zarafa-webmeetings-docker/master/env.conf```), modify ```env.conf``` to point to your local Zarafa installation and then start the image (```docker run -it --env-file=env.conf -p 10080:80 -p 10443:443 fbartels/zarafa-webmeetings-docker```). 
+You need to have Docker installed. After this has been done you can simply
+- pull the image from the [Docker Hub](https://hub.docker.com/)
+
+ ```docker pull fbartels/zarafa-webmeetings-docker```
+
+- download the default configuration
+
+ ```wget https://raw.githubusercontent.com/fbartels/zarafa-webmeetings-docker/master/env.conf```
+
+- modify ```env.conf``` to point to your local Zarafa installation
+- and then start the image
+
+ ```docker run -it --env-file=env.conf -p 10080:80 -p 10443:443 fbartels/zarafa-webmeetings-docker```
 
 Just a few seconds after the last command has been issued you will be able to open the WebApp provided by the image (accessible from ```https://ip-of-your-docker-host:10443```), login and enjoy Zarafa Web Meetings.
 
