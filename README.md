@@ -22,7 +22,7 @@ You need to have Docker installed. After this has been done you can simply
 - modify ```env.conf``` to point to your local Zarafa installation
 - and then start the image
 
- ```docker run -it --env-file=env.conf -p 10080:80 -p 10443:443 fbartels/zarafa-webmeetings-docker```
+ ```docker run -it --env-file=env.conf -p 10080:10080 -p 10443:10443 fbartels/zarafa-webmeetings-docker```
 
 Just a few seconds after the last command has been issued you will be able to open the WebApp provided by the image (accessible from ```https://ip-of-your-docker-host:10443```), login and enjoy Zarafa Web Meetings.
 
