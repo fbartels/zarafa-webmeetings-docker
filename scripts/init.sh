@@ -22,12 +22,17 @@ This Docker container helps you run/test Zarafa Web Meetings. All your data rema
 
 All you have to do is set ZARAFA_HOST to point to your current server in the accompanying env.conf. For added security you can also customise the individual secrects and add your own ssl certificates.
 
-Zarafa Web Meetings and a custom Zarafa WebApp will be available shortly via https://IP-of-your-docker-host:10443 (regular http requests will be redirected).
+Zarafa Web Meetings and a custom Zarafa WebApp will be available shortly via https://IP-of-your-docker-host:$HTTPS_PORT (regular http requests will be redirected).
 
 EOF
 
 # replace url of Zarafa host
 sed -i -e 's,file:///var/run/zarafa,'${ZARAFA_HOST}',g' /etc/zarafa/webapp/config.php
+
+# set http(s) ports and server name
+sed -i -e 's,HTTP_PORT,'${HTTP_PORT}',g' /etc/nginx/conf.d/zarafa-webmeetings.conf
+sed -i -e 's,HTTPS_PORT,'${HTTPS_PORT}',g' /etc/nginx/conf.d/zarafa-webmeetings.conf
+sed -i -e 's,SERVER_NAME,'${SERVER_NAME}',g' /etc/nginx/conf.d/zarafa-webmeetings.conf
 
 # replace secrets
 sed -i -e 's,GEHEIM,'${PRESENCE_SHARED_SECRET}',g' /etc/zarafa/presence.cfg
