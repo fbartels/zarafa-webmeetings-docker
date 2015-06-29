@@ -50,6 +50,15 @@ RUN apt-get install --allow-unauthenticated --assume-yes \
 	zarafa-webapp-plugins-meetings \
 	zarafa-webmeetings
 
+# Instal some more WebApp plugins
+RUN apt-get install --allow-unauthenticated --assume-yes \
+	zarafa-webapp-extbox \
+	zarafa-webapp-files \
+	zarafa-webapp-folderwidgets \
+	zarafa-webapp-pdfbox \
+	zarafa-webapp-titlecounter \
+	zarafa-webapp-webappmanual
+
 RUN ln -s /etc/php5/apache2/conf.d/zarafa.ini /etc/php5/fpm/conf.d/50-zarafa.ini
 
 COPY /conf/zarafa-webmeetings.conf /etc/nginx/conf.d/zarafa-webmeetings.conf
