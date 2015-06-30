@@ -52,7 +52,7 @@ fi
 
 if [[ ! -z $SSL_DHPARAM ]]; then
 	echo "using dhparam from env.conf"
-	echo -e "$SSL_DHPARAM > /etc/ssl/certs/dhparam.pem
+	echo -e "$SSL_DHPARAM" > /etc/ssl/certs/dhparam.pem
 	sed -i '/ssl_dhparam/s/^#//g' /etc/nginx/conf.d/zarafa-webmeetings.conf
 fi
 
