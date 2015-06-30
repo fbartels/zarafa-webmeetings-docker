@@ -25,7 +25,7 @@ RUN mkdir -p /root/packages \
 WORKDIR /root/packages
 
 # Downloading WebApp packages
-RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/final/WebApp/2.0.2/ubuntu-14.04/
+RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/beta/WebApp/2.1.0/BETA1/ubuntu-14.04/
 
 # Packing everything into a local repository and installing it
 RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/packages ./" > /etc/apt/sources.list.d/zarafa.list
@@ -52,12 +52,15 @@ RUN apt-get install --allow-unauthenticated --assume-yes \
 
 # Instal some more WebApp plugins
 RUN apt-get install --allow-unauthenticated --assume-yes \
+	zarafa-webapp-desktopnotifications \
 	zarafa-webapp-extbox \
 	zarafa-webapp-files \
 	zarafa-webapp-folderwidgets \
 	zarafa-webapp-pdfbox \
+	zarafa-webapp-plugins-delayeddelivery \
 	zarafa-webapp-titlecounter \
-	zarafa-webapp-webappmanual
+	zarafa-webapp-webappmanual \
+	zarafa-webapp-webodf
 
 RUN ln -s /etc/php5/apache2/conf.d/zarafa.ini /etc/php5/fpm/conf.d/50-zarafa.ini
 
