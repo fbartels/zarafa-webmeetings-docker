@@ -50,6 +50,12 @@ if [[ ! -z $SSL_CERTIFICATE ]] || [[ ! -z $SSL_CERTIFICATE_KEY ]]; then
 	echo -e "$SSL_CERTIFICATE_KEY" > /etc/ssl/private/ssl-cert-snakeoil.key
 fi
 
+if [[ ! -z $SSL_DHPARAM ]]; then
+	echo "using dhparam from env.conf"
+	echo -e "$SSL_DHPARAM > /etc/ssl/certs/dhparam.pem
+	sed -i '/ssl_dhparam/s/^#//g' /etc/nginx/conf.d/zarafa-webmeetings.conf
+fi
+
 service php5-fpm start
 service zarafa-presence start
 service zarafa-webmeetings start
