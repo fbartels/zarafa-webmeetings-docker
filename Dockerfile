@@ -26,6 +26,7 @@ WORKDIR /root/packages
 
 # Downloading WebApp packages
 RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/beta/WebApp/2.1.0/BETA1/ubuntu-14.04/
+RUN wget https://download.zarafa.com/community/beta/WebApp/plugins/SMIME%20RC%201/ubuntu-14.04/x86_64/zarafa-webapp-plugins-smime_1.0_all.deb
 
 # Packing everything into a local repository and installing it
 RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/packages ./" > /etc/apt/sources.list.d/zarafa.list
@@ -58,6 +59,7 @@ RUN apt-get install --allow-unauthenticated --assume-yes \
 	zarafa-webapp-folderwidgets \
 	zarafa-webapp-pdfbox \
 	zarafa-webapp-plugins-delayeddelivery \
+	zarafa-webapp-plugins-smime \
 	zarafa-webapp-titlecounter \
 	zarafa-webapp-webappmanual \
 	zarafa-webapp-webodf
