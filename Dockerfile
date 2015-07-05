@@ -1,26 +1,10 @@
-FROM ubuntu:trusty
+FROM fbartels/zarafa-base
 MAINTAINER Felix Bartels "felix@host-consultants.de"
-
-# Set the env variable DEBIAN_FRONTEND to noninteractive
-ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -y
 
-RUN apt-get install -y curl wget nginx php5-fpm ssl-cert
+RUN apt-get install -y nginx php5-fpm ssl-cert
 RUN rm /etc/nginx/sites-enabled/default
-
-# Use Zarafa Debian Repo (internal only)
-#RUN echo "deb http://devserver5.zarafa.com:82/zarafa-branches-7.2/Ubuntu_14.04/ /" > /etc/apt/sources.list.d/zarafa-obs.list \
-#	&& echo "deb http://devserver5.zarafa.com:82/zarafa-extras/Ubuntu_14.04/ /" >> /etc/apt/sources.list.d/zarafa-obs.list \
-#	&& curl http://devserver5.zarafa.com:82/zarafa-extras/Ubuntu_14.04/Release.key | apt-key add - \
-#	&& curl http://devserver5.zarafa.com:82/zarafa-branches-7.2/Ubuntu_14.04/Release.key | apt-key add -
-
-# Use packages from download.zarafa.com
-# Downloading and installing Zarafa packages
-RUN mkdir -p /root/packages \
-        && wget --no-check-certificate --quiet \
-        https://download.zarafa.com/zarafa/drupal/download_platform.php?platform=beta/7.2/7.2.1-49597/zcp-7.2.1-49597-ubuntu-14.04-x86_64-forhome.tar.gz -O- \
-        | tar xz -C /root/packages --strip-components=1
 
 WORKDIR /root/packages
 
@@ -87,4 +71,4 @@ ENV PRESENCE_SHARED_SECRET bb92a42fb7b5ab6acb85dba03961444269d23382c0f0b663e29b0
 
 # cleanup
 RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/packages /root/webmeetings
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/packages /root/webmeetings /etc/apt/sources.list.d/zarafa.list
