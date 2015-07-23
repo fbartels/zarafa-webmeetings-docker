@@ -69,6 +69,8 @@ ENV WEBMEETINGS_ENCRYPTION_SECRET 93b3b642b40a8cc8fb9e684d466abf69ef983806c0dce3
 ENV WEBMEETINGS_SHARED_SECRET 6d0a022e3a8e77022edd97bd4331d86e378f9811cd8ae82e2c4e9b27f16b7adf
 ENV PRESENCE_SHARED_SECRET bb92a42fb7b5ab6acb85dba03961444269d23382c0f0b663e29b084e54f995b5
 
+EXPOSE 10080 10443
+
 # cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/packages /root/webmeetings /etc/apt/sources.list.d/zarafa.list
