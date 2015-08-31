@@ -10,7 +10,7 @@ WORKDIR /root/packages
 
 # Downloading WebApp packages
 RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/beta/WebApp/2.1.0/BETA1/ubuntu-14.04/
-RUN wget https://download.zarafa.com/community/beta/WebApp/plugins/SMIME%20RC%201/ubuntu-14.04/x86_64/zarafa-webapp-plugins-smime_1.0_all.deb
+RUN wget https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/ubuntu-14.04/x86_64/zarafa-webapp-plugins-smime_1.0_all.deb
 
 # Packing everything into a local repository and installing it
 RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/packages ./" > /etc/apt/sources.list.d/zarafa.list
@@ -18,7 +18,7 @@ RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/p
 # Downloading latest Web Meetings release
 RUN mkdir -p /root/webmeetings \
 	&& wget --no-check-certificate --quiet \
-	https://download.zarafa.com/zarafa/drupal/download_webmeetings.php?file=Zarafa-WebMeetings-1.0.49748.tar.gz -O- \
+	https://download.zarafa.com/zarafa/drupal/download_webmeetings.php?file=Zarafa-WebMeetings-1.1-BETA1.tar.gz -O- \
 	| tar xz -C /root/webmeetings --strip-components=2
 
 WORKDIR /root/webmeetings/ubuntu-14.04/x86_64
