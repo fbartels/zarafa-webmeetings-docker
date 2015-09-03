@@ -38,6 +38,7 @@ sed -i -e 's,SERVER_NAME,'${SERVER_NAME}',g' /etc/nginx/conf.d/zarafa-webmeeting
 sed -i -e 's,GEHEIM,'${PRESENCE_SHARED_SECRET}',g' /etc/zarafa/presence.cfg
 sed -i -e 's,the-default-secret-do-not-keep-me,'${WEBMEETINGS_SHARED_SECRET}',g' /etc/zarafa/webapp/config-meetings.php
 sed -i -e '0,/false/s/false/true/' /etc/zarafa/webapp/config-meetings.php
+sed -i -e 's,/webapp/,/,g' /etc/zarafa/webapp/config-meetings.php
 sed -i -e 's,test,'${PRESENCE_SHARED_SECRET}',g' /etc/zarafa/webapp/config-meetings.php
 sed -i -e 's,the-default-secret-do-not-keep-me,'${WEBMEETINGS_SESSION_SECRET}',g' /etc/zarafa/webmeetings.cfg
 sed -i -e 's,tne-default-encryption-block-key,'${WEBMEETINGS_ENCRYPTION_SECRET}',g' /etc/zarafa/webmeetings.cfg
