@@ -9,7 +9,7 @@ RUN rm /etc/nginx/sites-enabled/default
 WORKDIR /root/packages
 
 # Downloading WebApp packages
-RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/beta/WebApp/2.1.0/RC1/ubuntu-14.04/
+RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/final/WebApp/2.1.0/ubuntu-14.04/
 RUN wget https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/ubuntu-14.04/x86_64/zarafa-webapp-plugins-smime_1.0_all.deb
 
 # Packing everything into a local repository and installing it
