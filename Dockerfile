@@ -16,7 +16,7 @@ RUN wget https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/
 RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/packages ./" > /etc/apt/sources.list.d/zarafa.list
 
 # Downloading latest Web Meetings release
-ENV DOWNLOADURL https://download.zarafa.com/zarafa/drupal/download_webmeetings.php?file=Zarafa-WebMeetings-1.1-RC1.tar.gz
+ENV DOWNLOADURL https://download.zarafa.com/zarafa/drupal/download_webmeetings.php?file=Zarafa-WebMeetings-1.1.tar.gz
 RUN mkdir -p /root/webmeetings \
 	&& wget --no-check-certificate --quiet \
 	$DOWNLOADURL -O- | tar xz -C /root/webmeetings --strip-components=2
