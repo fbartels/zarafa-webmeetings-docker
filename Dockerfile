@@ -9,22 +9,22 @@ RUN rm /etc/nginx/sites-enabled/default
 # Installing packages
 RUN apt-get install --allow-unauthenticated --assume-yes \
 	php5-curl \
-	zarafa-webapp \
 	zarafa-presence \
-	zarafa-webapp-plugins-meetings \
-	zarafa-webmeetings \
+	zarafa-webapp \
 	zarafa-webapp-desktopnotifications \
 	zarafa-webapp-files \
 	zarafa-webapp-folderwidgets \
 	zarafa-webapp-plugins-delayeddelivery \
+	zarafa-webapp-plugins-filepreviewer \
+	zarafa-webapp-plugins-meetings \
 	zarafa-webapp-plugins-smime \
-	zarafa-webapp-titlecounter \
-	zarafa-webapp-webappmanual \
 	zarafa-webapp-plugins-spell \
 	zarafa-webapp-plugins-spell-de-de \
 	zarafa-webapp-plugins-spell-en \
 	zarafa-webapp-plugins-spell-nl \
-	zarafa-webapp-plugins-filepreviewer
+	zarafa-webapp-titlecounter \
+	zarafa-webapp-webappmanual \
+	zarafa-webmeetings
 
 RUN ln -s /etc/php5/apache2/conf.d/zarafa.ini /etc/php5/fpm/conf.d/50-zarafa.ini
 
@@ -51,4 +51,4 @@ EXPOSE 80 443
 
 # cleanup
 RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/packages /root/webmeetings /etc/apt/sources.list.d/zarafa.list
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
