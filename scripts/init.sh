@@ -8,9 +8,7 @@ This image needs a set of environment variables specified. The example configura
 
 With this file you can then start the container in the following way:
 
-docker run -it --env-file=env.conf \
--p 10080:80 -p 10443:443 \
-zarafa-webmeetings-docker
+docker run -it --env-file=env.conf --net=host zarafa-webmeetings-docker
 
 EOF
 	exit 1
