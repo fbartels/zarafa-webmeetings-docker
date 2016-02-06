@@ -6,27 +6,25 @@ RUN apt-get update -y
 RUN apt-get install -y nginx php5-fpm ssl-cert
 RUN rm /etc/nginx/sites-enabled/default
 
-# Installing packages (from here on its the same for devserver5 and the latest release)
-RUN apt-get update -y
+# Installing packages
 RUN apt-get install --allow-unauthenticated --assume-yes \
 	php5-curl \
 	zarafa-webapp \
 	zarafa-presence \
 	zarafa-webapp-plugins-meetings \
-	zarafa-webmeetings
-
-# Instal some more WebApp plugins
-RUN apt-get install --allow-unauthenticated --assume-yes \
+	zarafa-webmeetings \
 	zarafa-webapp-desktopnotifications \
-	zarafa-webapp-extbox \
 	zarafa-webapp-files \
 	zarafa-webapp-folderwidgets \
-	zarafa-webapp-pdfbox \
 	zarafa-webapp-plugins-delayeddelivery \
 	zarafa-webapp-plugins-smime \
 	zarafa-webapp-titlecounter \
 	zarafa-webapp-webappmanual \
-	zarafa-webapp-webodf
+	zarafa-webapp-plugins-spell \
+	zarafa-webapp-plugins-spell-de-de \
+	zarafa-webapp-plugins-spell-en \
+	zarafa-webapp-plugins-spell-nl \
+	zarafa-webapp-plugins-filepreviewer
 
 RUN ln -s /etc/php5/apache2/conf.d/zarafa.ini /etc/php5/fpm/conf.d/50-zarafa.ini
 
