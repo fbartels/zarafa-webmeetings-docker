@@ -1,3 +1,10 @@
+# IMPORTANT!
+
+I am currently restructuring this image. So the steps below may not always work!
+
+
+
+
 # zarafa-webmeetings-docker
 
 **Q: what’s the benefit of having this?**
