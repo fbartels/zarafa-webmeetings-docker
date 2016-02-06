@@ -6,26 +6,6 @@ RUN apt-get update -y
 RUN apt-get install -y nginx php5-fpm ssl-cert
 RUN rm /etc/nginx/sites-enabled/default
 
-WORKDIR /root/packages
-
-# Downloading WebApp packages
-RUN wget --quiet -p -r -nc -nd -l 1 -e robots=off -A deb --no-check-certificate https://download.zarafa.com/community/final/WebApp/2.1.2/debian-8.0/
-RUN wget https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/debian-8.0/x86_64/zarafa-webapp-plugins-smime_1.0_all.deb
-
-# Packing everything into a local repository and installing it
-RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/packages ./" > /etc/apt/sources.list.d/zarafa.list
-
-# Downloading latest Web Meetings release
-ENV DOWNLOADURL https://download.zarafa.com/zarafa/drupal/download_webmeetings.php?file=Zarafa-WebMeetings-1.2-RC3.tar.gz
-RUN mkdir -p /root/webmeetings \
-	&& wget --no-check-certificate --quiet \
-	$DOWNLOADURL -O- | tar xz -C /root/webmeetings --strip-components=2
-
-WORKDIR /root/webmeetings/debian-8.0/x86_64
-
-# Build local repo for Web Meetings
-RUN apt-ftparchive packages . | gzip -9c > Packages.gz && echo "deb file:/root/webmeetings/debian-8.0/x86_64/ ./" >> /etc/apt/sources.list.d/zarafa.list
-
 # Installing packages (from here on its the same for devserver5 and the latest release)
 RUN apt-get update -y
 RUN apt-get install --allow-unauthenticated --assume-yes \
