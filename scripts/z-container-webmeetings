@@ -3,6 +3,6 @@
 # cleanup old instanced
 # start a named docker container
 
-# reminder: copy env.conf to be used with docker command, but copy from where? have is installed in inst command?
-# install -D conf/env.conf /etc/z-container/webmeetings/env.conf
+# reminder: use env.conf
+#  /etc/z-container/webmeetings/env.conf
 

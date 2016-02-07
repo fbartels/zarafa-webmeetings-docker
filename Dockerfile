@@ -31,9 +31,12 @@ RUN ln -s /etc/php5/apache2/conf.d/zarafa.ini /etc/php5/fpm/conf.d/50-zarafa.ini
 COPY /conf/zarafa-webmeetings.conf /etc/nginx/conf.d/zarafa-webmeetings.conf
 COPY /conf/nginx.conf /etc/nginx/nginx.conf
 
+# helper scripts
+COPY /scripts/z-container-webmeetings /root
+COPY /conf/env.conf /root
+
 # Entry-Script
 COPY /scripts/init.sh /usr/local/bin/init.sh
-COPY /scripts/z-container-webmeetings /root/
 
 # Set Entrypoint
 ENTRYPOINT ["/usr/local/bin/init.sh"]

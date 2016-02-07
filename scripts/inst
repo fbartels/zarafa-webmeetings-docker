@@ -3,6 +3,7 @@
 install_app() {
 echo "Installing Zarafa WebMeetings Container..."
 install -m 0755 /root/z-container-webmeetings /target/
+install -D /root/env.conf /conf/webmeetings/env.conf
 
 if [ -n "${APP_CONFIG}" ]; then
 	echo "Updating data directory to ${APP_CONFIG}..."
