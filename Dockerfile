@@ -32,8 +32,8 @@ COPY /conf/zarafa-webmeetings.conf /etc/nginx/conf.d/zarafa-webmeetings.conf
 COPY /conf/nginx.conf /etc/nginx/nginx.conf
 
 # helper scripts
-COPY /scripts/z-container-webmeetings /root
-COPY /conf/env.conf /root
+COPY /scripts/z-container-webmeetings /root/
+COPY /conf/env.conf /root/
 
 # Entry-Script
 COPY /scripts/init.sh /usr/local/bin/init.sh
