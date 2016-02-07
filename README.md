@@ -3,6 +3,25 @@
 I am currently restructuring this image. So the steps below may not always work!
 
 
+Before using the container you have to once start the image with the following command:
+```
+docker run -it --rm -v /usr/local/bin:/target \
+    fbartels/zarafa-webmeetings-docker instl
+```
+This installs a little helper script into **/usr/local/bin** that will be used for subsequent starts.
+
+# Updating
+The packages inside the container can be updated by executing
+
+```docker exec zarafa-webmeetings update```
+
+The image itself can be updated by executing
+
+```
+docker pull fbartels/zarafa-webmeetings-docker
+docker stop zarafa-webmeetings
+z-container-webmeetings
+```
 
 
 # zarafa-webmeetings-docker
