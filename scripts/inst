@@ -1,0 +1,16 @@
+#!/bin/bash
+
+install_app() {
+echo "Installing Zarafa WebMeetings Container..."
+install -m 0755 /root/z-container-webmeetings /target/
+
+if [ -n "${APP_CONFIG}" ]; then
+	echo "Updating data directory to ${APP_CONFIG}..."
+	sed -i -e s%"\(APP_CONFIG=\).*"%"\1\"${APP_CONFIG}\""%1 /target/z-container-webmeetings
+fi
+
+}
+
+if [ -z "$1" ]; then
+	install_app
+fi

@@ -33,6 +33,7 @@ COPY /conf/nginx.conf /etc/nginx/nginx.conf
 
 # Entry-Script
 COPY /scripts/init.sh /usr/local/bin/init.sh
+COPY /scripts/z-container-webmeetings /root/
 
 # Set Entrypoint
 ENTRYPOINT ["/usr/local/bin/init.sh"]
