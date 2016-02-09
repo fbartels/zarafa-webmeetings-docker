@@ -3,7 +3,7 @@ MAINTAINER Felix Bartels "felix@host-consultants.de"
 
 RUN apt-get update -y
 
-RUN apt-get install -y nginx php5-fpm ssl-cert
+RUN apt-get install -y supervisor nginx php5-fpm ssl-cert
 RUN rm /etc/nginx/sites-enabled/default
 
 # Installing packages
@@ -32,15 +32,16 @@ COPY /conf/zarafa-webmeetings.conf /etc/nginx/conf.d/zarafa-webmeetings.conf
 COPY /conf/nginx.conf /etc/nginx/nginx.conf
 
 # helper scripts
+COPY /scripts/instl /bin/instl
 COPY /scripts/z-container-webmeetings /root/
 COPY /conf/env.conf /root/
+COPY /conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Entry-Script
-COPY /scripts/init.sh /usr/local/bin/init.sh
+#COPY /scripts/init.sh /usr/local/bin/init.sh
 
 # Set Entrypoint
-ENTRYPOINT ["/usr/local/bin/init.sh"]
-CMD ["nginx"]
+CMD ["/usr/bin/supervisord"]
 
 # Buildtime environment variables to only define ZARAFA_HOST at startup
 ENV HTTP_PORT 80
