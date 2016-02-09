@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo "Installing Zarafa WebMeetings Container..."
-install -m 0755 /root/z-container-webmeetings /target/
-install -D /root/env.conf /conf/webmeetings/env.conf
-
-echo "Installation complete please run 'z-container-webmeetings' from your normal shell to continue with initial configuration/start"
