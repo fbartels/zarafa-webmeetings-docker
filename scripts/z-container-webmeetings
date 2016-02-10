@@ -1,4 +1,5 @@
 #!/bin/bash
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
 # TODO following the example in https://github.com/MediaBrowser/Emby.Build/blob/master/docker-containers/stable/root/var/cache/scripts/emby-server
 # cleanup old instanced
 # start a named docker container
@@ -6,3 +7,8 @@
 # reminder: use env.conf
 #  /etc/z-container/webmeetings/env.conf
 
+( id -Gn | grep -q docker ) || [ $EUID == 0 ] || SUDO=sudo
+
+$SUDO docker rm zarafa-webmeetings
+$SUDO docker pull fbartels/zarafa-webmeetings-docker
+$SUDO docker run --name=zarafa-webmeetings -it --env-file=/etc/z-container/webmeetings/env.conf --net=host fbartels/zarafa-webmeetings-docker
