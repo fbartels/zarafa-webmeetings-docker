@@ -1,11 +1,9 @@
 #!/bin/bash
 PATH=/usr/sbin:/usr/bin:/sbin:/bin
-# TODO following the example in https://github.com/MediaBrowser/Emby.Build/blob/master/docker-containers/stable/root/var/cache/scripts/emby-server
-# cleanup old instanced
-# start a named docker container
-
-# reminder: use env.conf
-#  /etc/z-container/webmeetings/env.conf
+# TODO:
+# - following the example in https://github.com/MediaBrowser/Emby.Build/blob/master/docker-containers/stable/root/var/cache/scripts/emby-server
+# - have (external) config file to choose between --net=host and port forwarding
+# - check for customer ssl certs
 
 ( id -Gn | grep -q docker ) || [ $EUID == 0 ] || SUDO=sudo
 
