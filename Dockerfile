@@ -35,13 +35,13 @@ COPY /conf/nginx.conf /etc/nginx/nginx.conf
 COPY /scripts/instl /bin/instl
 COPY /scripts/z-container-webmeetings /root/
 COPY /conf/env.conf /root/
-COPY /conf/supervisord.conf /etc/supervisord.conf
+COPY /conf/supervisord.conf /etc/supervisor/conf.d/
 
 # Entry-Script
 #COPY /scripts/init.sh /usr/local/bin/init.sh
 
 # Set Entrypoint
-CMD ["/usr/bin/supervisord -c /etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord"]
 
 # Buildtime environment variables to only define ZARAFA_HOST at startup
 ENV HTTP_PORT 80
