@@ -10,6 +10,8 @@ docker run -it --rm -v /usr/local/bin:/target -v /etc/z-container:/conf \
 ```
 This installs a little helper script into **/usr/local/bin** that will be used for subsequent starts.
 
+Warning: when running the above command the env.conf file in /etc/z-container/webmeetings will be overwritten (with creating a backup before).
+
 # Updating
 The packages inside the container can be updated by executing
 
