@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [ -z $ZARAFA_HOST ]; then
-	cat << EOF
-
-ERROR:
-This image needs a set of environment variables specified. The example configuration can be found at https://github.com/fbartels/zarafa-webmeetings-docker/blob/master/env.conf.
-
-With this file you can then start the container in the following way:
-
-docker run -it --env-file=env.conf --net=host zarafa-webmeetings-docker
-
-EOF
-	exit 1
-fi
+#if [ -z $ZARAFA_HOST ]; then
+#	cat << EOF
+#
+#ERROR:
+#This image needs a set of environment variables specified. The example configuration can be found at https://github.com/fbartels/zarafa-webmeetings-docker/blob/master/env.conf.
+#
+#With this file you can then start the container in the following way:
+#
+#docker run -it --env-file=env.conf --net=host zarafa-webmeetings-docker
+#
+#EOF
+#	exit 1
+#fi
 
 cat << EOF
 
@@ -61,4 +61,4 @@ service zarafa-webmeetings start
 
 # exec CMD
 echo "Starting $@ .."
-exec "$@"
+exec supervisor -c /etc/supervisor.conf

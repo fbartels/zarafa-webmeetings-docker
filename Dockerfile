@@ -38,10 +38,10 @@ COPY /conf/env.conf /root/
 COPY /conf/supervisord.conf /etc/supervisor/conf.d/
 
 # Entry-Script
-#COPY /scripts/init.sh /usr/local/bin/init.sh
+COPY /scripts/init.sh /usr/local/bin/init.sh
 
 # Set Entrypoint
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/local/bin/init.sh"]
 
 # Buildtime environment variables to only define ZARAFA_HOST at startup
 ENV HTTP_PORT 80
