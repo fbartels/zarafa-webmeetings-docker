@@ -55,10 +55,6 @@ if [[ ! -z $SSL_DHPARAM ]]; then
 	sed -i '/ssl_dhparam/s/^#//g' /etc/nginx/conf.d/zarafa-webmeetings.conf
 fi
 
-service php5-fpm start
-service zarafa-presence start
-service zarafa-webmeetings start
-
 # exec CMD
 echo "Starting $@ .."
-exec supervisor -c /etc/supervisor.conf
+exec supervisord -c /etc/supervisor.conf

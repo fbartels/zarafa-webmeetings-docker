@@ -1,4 +1,4 @@
-FROM fbartels/zarafa-base
+FROM fbartels/zarafa-base:repo
 MAINTAINER Felix Bartels "felix@host-consultants.de"
 
 RUN apt-get update -y
